@@ -24,9 +24,14 @@ const main = async resolveContext => {
       }
     );
 
-  let chatViewModelState = window.__INITIAL_STATE__.chat
+  const { data } = await api.query({
+    name: 'chat',
+    aggregateIds: '*'
+  }).promise()
 
-  initUI(chatViewModelState, sendMessage)
+  let chatViewModelState = data
+
+  initUI(data, sendMessage)
 
   const chatViewModelUpdater = event => {
     const eventType = event != null && event.type != null ? event.type : null
