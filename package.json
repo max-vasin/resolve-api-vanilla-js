@@ -17,20 +17,19 @@
     "@babel/node": "7.0.0",
     "@babel/polyfill": "7.0.0",
     "domready": "1.0.8",
-    "resolve-scripts": "0.21.13",
-    "resolve-storage-postgresql-serverless": "0.21.13",
-    "resolve-storage-lite": "0.21.13",
+    "resolve-api": "^0.0.1-nightly.2f5d38984d7d0da77e2baf8236286a06fa5adf9f",
     "resolve-readmodel-lite": "0.21.13",
     "resolve-readmodel-mysql": "0.21.13",
     "resolve-runtime": "0.21.13",
+    "resolve-scripts": "0.21.13",
+    "resolve-storage-lite": "0.21.13",
+    "resolve-storage-postgresql-serverless": "0.21.13",
     "resolve-subscribe-mqtt": "0.21.13",
     "resolve-subscribe-socket.io": "0.21.13",
     "unfetch": "4.1.0",
     "webpack": "4.41.2"
   },
   "devDependencies": {
-    "aws-sdk": "2.587.0",
-    "aws-xray-sdk-core": "2.5.0",
     "@babel/core": "7.0.0",
     "@babel/plugin-proposal-class-properties": "7.0.0",
     "@babel/plugin-proposal-export-default-from": "7.0.0",
@@ -38,10 +37,12 @@
     "@babel/plugin-transform-runtime": "7.0.0",
     "@babel/preset-env": "7.0.0",
     "@babel/preset-react": "7.0.0",
+    "aws-sdk": "2.587.0",
+    "aws-xray-sdk-core": "2.5.0",
     "babel-jest": "24.1.0",
     "jest": "24.1.0",
     "react-test-renderer": "16.7.0",
-    "testcafe": "0.23.3",
-    "resolve-cloud": "*"
+    "resolve-cloud": "*",
+    "testcafe": "0.23.3"
   }
 }
