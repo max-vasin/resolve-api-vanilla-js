@@ -27,7 +27,7 @@ const main = async resolveContext => {
   const { data } = await api.query({
     name: 'chat',
     aggregateIds: '*'
-  }).promise()
+  })
 
   let chatViewModelState = data
 
@@ -44,7 +44,7 @@ const main = async resolveContext => {
     setImmediate(updateUI.bind(null, chatViewModelState))
   }
 
-  api.subscribeTo("chat", "*", chatViewModelUpdater)
+  await api.subscribeTo("chat", "*", chatViewModelUpdater)
 }
 
 export default main;
