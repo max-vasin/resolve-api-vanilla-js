@@ -4,10 +4,10 @@ import initUI from './init_ui'
 import updateUI from './update_ui'
 
 const main = async resolveContext => {
-  await new Promise(resolve => domready(resolve));
-  const { viewModels } = resolveContext;
-  const chatViewModel = viewModels.find(({ name }) => name === "chat");
-  const api = getApi(resolveContext);
+  await new Promise(resolve => domready(resolve))
+  const { viewModels } = resolveContext
+  const chatViewModel = viewModels.find(({ name }) => name === "chat")
+  const api = getApi(resolveContext)
 
   const sendMessage = (userName, message) =>
     api.command(
@@ -24,11 +24,17 @@ const main = async resolveContext => {
       }
     );
 
-  const { data } = await api.query({
-    name: 'chat',
-    aggregateIds: '*'
-  })
+  const reloadChat = async () => {
+    console.log('reload chat')
+    return await api.query(
+    {
+      name: 'chat',
+      aggregateIds: '*'
+    }
+  )
+  }
 
+  const { data } = await reloadChat()
   let chatViewModelState = data
 
   initUI(data, sendMessage)
@@ -44,7 +50,11 @@ const main = async resolveContext => {
     setImmediate(updateUI.bind(null, chatViewModelState))
   }
 
-  await api.subscribeTo("chat", "*", chatViewModelUpdater)
+  await api.subscribeTo("chat", "*", 
+    chatViewModelUpdater,
+    reloadChat
+  )
+
 }
 
 export default main;
